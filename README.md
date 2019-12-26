@@ -1,2 +1,2 @@
-# shinyapp-template
-Personalized Cookie-cutter Template for Building Shiny Apps
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
