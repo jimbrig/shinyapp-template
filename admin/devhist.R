@@ -32,7 +32,8 @@ c(
   "data-prep",
   "data-prep/data-raw",
   "data-prep/data",
-  "data-prep/scripts"
+  "data-prep/scripts",
+  "data-prep/cache"
 ) %>%
   purrr::walk(fs::dir_create, recurse = TRUE)
 
@@ -68,6 +69,7 @@ usethis::use_readme_rmd()
 c(
   "data-prep/data-raw",
   "data-prep/data",
+  "data-prep/cache",
   "shiny-app/data"
 ) %>%
   purrr::walk(function(x) usethis::use_git_ignore(
