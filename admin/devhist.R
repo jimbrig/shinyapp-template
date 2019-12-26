@@ -34,10 +34,13 @@ c(
   "data-prep/data",
   "data-prep/scripts"
 ) %>%
-  purrr::walk(fs::dir_create)
+  purrr::walk(fs::dir_create, recurse = TRUE)
 
 # files
 c(
+  "run-app.R",
+  "deploy-app.R",
+  "shiny-app/config.yml",
   "shiny-app/ui.R",
   "shiny-app/server.R",
   "shiny-app/global.R",
@@ -49,6 +52,8 @@ c(
   "shiny-app/ui/ui_tab_two.R",
   "shiny-app/server/server_tab_one.R",
   "shiny-app/server/server_tab_two.R",
+  "shiny-app/www/custom.css",
+  "shiny-app/www/custom.js",
   "data-prep/scripts/1-setup.R",
   "data-prep/scripts/2-process.R",
   "data-prep/scripts/3-output.R",
@@ -56,5 +61,15 @@ c(
 ) %>%
   purrr::walk(fs::file_create)
 
-# readmes
+# readme
 usethis::use_readme_rmd()
+
+# git ignores
+c(
+  "data-prep/data-raw",
+  "data-prep/data",
+  "shiny-app/data"
+) %>%
+  purrr::walk(function(x) usethis::use_git_ignore(
+    ignores = c("*", "!.gitignore"), directory = x)
+  )
